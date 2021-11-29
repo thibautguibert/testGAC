@@ -12,11 +12,12 @@ const styles = StyleSheet.create({
 });
 
 const AddOdometer = () => (
-  <LinearGradient colors={[colors.yellow, colors.salmon]} style={styles.container}>
+  <LinearGradient
+    colors={[colors.yellow, colors.salmon]}
+    style={styles.container}
+  >
     <Title title="Ajouter un relevé" />
-    <Text>
-      une LinearGradient pour ajouter un relevé kilométrique
-    </Text>
+    <Text>une LinearGradient pour ajouter un relevé kilométrique</Text>
   </LinearGradient>
 );
 

@@ -11,8 +11,8 @@
     "lint": "eslint ."
   },
   "dependencies": {
-    "metro-config": "^0.66.2",
     "@react-native-community/masked-view": "^0.1.11",
+    "metro-config": "^0.66.2",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-native": "0.66.3",
@@ -22,7 +22,10 @@
     "react-native-router-flux": "^4.3.1",
     "react-native-safe-area-context": "^3.3.2",
     "react-native-screens": "^3.9.0",
-    "react-native-svg": "^12.1.1"
+    "react-native-svg": "^12.1.1",
+    "react-redux": "^7.2.6",
+    "redux": "^4.1.2",
+    "redux-thunk": "^2.4.1"
   },
   "devDependencies": {
     "@babel/core": "^7.12.9",

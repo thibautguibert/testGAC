@@ -18,9 +18,7 @@ const titleStyle = {
   padding: 10,
 };
 
-export const Title = ({ title }) => (
-  <Text style={titleStyle}>{title}</Text>
-);
+export const Title = ({ title }) => <Text style={titleStyle}>{title}</Text>;
 
 Title.propTypes = { title: PropTypes.string };
 Title.defaultProps = { title: '' };

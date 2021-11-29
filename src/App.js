@@ -1,13 +1,16 @@
 import React from 'react';
-import {
-  SafeAreaView,
-  StatusBar,
-  StyleSheet,
-} from 'react-native';
+import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
+import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
+import { Provider } from 'react-redux';
+import thunk from 'redux-thunk';
 
 import RouterNavigation from './Router';
 import NavBar from './components/NavBar';
 import { colors } from './style';
+import * as reducers from './reducers';
+
+const reducer = combineReducers(reducers);
+const store = createStore(reducer, compose(applyMiddleware(thunk)));
 
 const styles = StyleSheet.create({
   backgroundApp: {
@@ -18,13 +21,15 @@ const styles = StyleSheet.create({
 });
 
 const App = () => {
-  console.log('app is loaded');
+  console.log(store.getState());
   return (
-    <SafeAreaView style={styles.backgroundApp}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.yellow} />
-      <RouterNavigation />
-      <NavBar />
-    </SafeAreaView>
+    <Provider store={store}>
+      <SafeAreaView style={styles.backgroundApp}>
+        <StatusBar barStyle="dark-content" backgroundColor={colors.yellow} />
+        <RouterNavigation />
+        <NavBar />
+      </SafeAreaView>
+    </Provider>
   );
 };
 
