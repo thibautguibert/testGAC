@@ -1,9 +1,13 @@
 import React from 'react';
 import {
-  View, Text, StyleSheet,
+  View, StyleSheet,
 } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { colors } from '../style';
+
+import AddIcon from '../assets/add.svg';
+import CarIcon from '../assets/car.svg';
+import ThreeDots from '../assets/threeDots.svg';
 
 const styles = StyleSheet.create({
   navbar: {
@@ -20,12 +24,13 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: 35,
     width: 35,
+    color: colors.darkGray,
   },
   absolute: {
     position: 'absolute',
     zIndex: 0,
     top: 0,
-    left: 10,
+    left: 0,
     right: 0,
     bottom: 0,
     justifyContent: 'center',
@@ -41,9 +46,9 @@ const styles = StyleSheet.create({
 
 const NavBar = () => (
   <View style={styles.navbar}>
-    <Text style={styles.icon} onPress={() => Actions.odometerList()}>Car</Text>
-    <Text style={styles.icon} onPress={() => Actions.addOdometer()}>Plus</Text>
-    <Text>...</Text>
+    <CarIcon height={30} width={30} style={[styles.icon, { color: colors.salmon }]} onPress={() => Actions.odometerList()} />
+    <AddIcon height={40} width={40} style={[styles.icon, { marginTop: -15 }]} onPress={() => Actions.addOdometer()} />
+    <ThreeDots height={30} width={30} style={styles.icon} onPress={() => Actions.readMe()} />
     <View style={styles.absolute}>
       <View style={styles.circle} />
     </View>
