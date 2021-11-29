@@ -3,6 +3,7 @@ import { ScrollView, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
 import OdometerCard from './components/OdometerCard';
 import { colors, Title } from './style';
+import initialMileage from './data/mileage_readings.json';
 
 const styles = StyleSheet.create({
   container: {
@@ -21,10 +22,9 @@ const OdometerList = () => (
   >
     <Title title="Relevés kilométriques du véhicule" />
     <ScrollView>
-      <OdometerCard kilometers="18 400" />
-      <OdometerCard kilometers="22 700" />
-      <OdometerCard kilometers="25 900" />
-      <OdometerCard kilometers="25 900" />
+      {initialMileage.mileage_readings.map((mileage) => (
+        <OdometerCard key={mileage.id} kilometers={mileage.value} date={mileage.issued_on} />
+      ))}
     </ScrollView>
   </LinearGradient>
 );
