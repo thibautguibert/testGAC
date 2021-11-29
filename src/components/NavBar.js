@@ -24,7 +24,7 @@ const styles = StyleSheet.create({
     position: 'relative',
     height: 35,
     width: 35,
-    color: colors.darkGray,
+    color: colors.gray,
   },
   absolute: {
     position: 'absolute',
