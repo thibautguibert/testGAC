@@ -3,6 +3,8 @@ import { SafeAreaView, StatusBar, StyleSheet } from 'react-native';
 import { createStore, applyMiddleware, combineReducers, compose } from 'redux';
 import { Provider } from 'react-redux';
 import thunk from 'redux-thunk';
+import moment from 'moment-timezone';
+import momentFr from './utils/moment.fr';
 
 import RouterNavigation from './Router';
 import NavBar from './components/NavBar';
@@ -19,6 +21,9 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellow,
   },
 });
+
+moment.updateLocale('fr', momentFr);
+moment.tz.setDefault('Europe/Paris');
 
 const App = () => {
   console.log(store.getState());

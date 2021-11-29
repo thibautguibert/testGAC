@@ -17,7 +17,6 @@ const titleStyle = {
   textAlign: 'center',
   fontWeight: 'bold',
   padding: 15,
-  marginBottom: 20,
 };
 
 export const Title = ({ title }) => <Text style={titleStyle}>{title}</Text>;

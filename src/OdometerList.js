@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 30,
     alignItems: 'center',
     backgroundColor: colors.yellow,
+    paddingBottom: 10,
   },
 });
 
@@ -20,7 +21,10 @@ const OdometerList = () => (
   >
     <Title title="Relevés kilométriques du véhicule" />
     <ScrollView>
-      <OdometerCard />
+      <OdometerCard kilometers="18 400" />
+      <OdometerCard kilometers="22 700" />
+      <OdometerCard kilometers="25 900" />
+      <OdometerCard kilometers="25 900" />
     </ScrollView>
   </LinearGradient>
 );
