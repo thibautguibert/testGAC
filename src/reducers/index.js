@@ -1,3 +1,7 @@
 import pageName from './pageName';
+import mileageReadings from './mileageReadings';
 
-export { pageName as page };
+export {
+  pageName as page,
+  mileageReadings,
+};
