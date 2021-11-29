@@ -65,7 +65,7 @@ OdometerCard.propTypes = {
 
 OdometerCard.defaultProps = {
   kilometers: '0',
-  date: '19 novembre 2020',
+  date: '??? (erreur de date)',
 };
 
 export default OdometerCard;

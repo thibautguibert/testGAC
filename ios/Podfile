@@ -18,6 +18,8 @@ target 'testGAC' do
 
   pod 'RNSVG', :path => '../node_modules/react-native-svg'
 
+  pod 'RNDateTimePicker', :path => '../node_modules/@react-native-community/datetimepicker'
+
   target 'testGACTests' do
     inherit! :complete
     # Pods for testing
