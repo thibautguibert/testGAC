@@ -11,7 +11,8 @@ const styles = StyleSheet.create({
     backgroundColor: colors.yellow,
   },
   text: {
-    fontSize: 20,
+    fontSize: 14,
+    paddingVertical: 10,
   },
 });
 
@@ -22,7 +23,7 @@ const ReadMe = () => (
   >
     <Title title="En savoir plus" />
     <ScrollView>
-      <Text style={styles.text}>Consignes de l’exercice</Text>
+      <Text style={styles.text}>Pour ajouter un relevé antérieur à un relevé déjà existant, il faut d'abord supprimer ce dernier.</Text>
     </ScrollView>
   </LinearGradient>
 );

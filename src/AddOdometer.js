@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
+import { Actions } from 'react-native-router-flux';
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
@@ -64,6 +65,7 @@ const AddOdometer = () => {
       value: kilometers,
     };
     dispatch(addNewMileage(newMileAge));
+    Actions.successModal();
   };
 
   return (

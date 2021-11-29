@@ -9,6 +9,7 @@ export const colors = {
   gray: '#999999',
   darkGray: '#4D4B4B',
   black: '#000000',
+  transparent: 'rgba(0,0,0,0.2)',
 };
 
 const titleStyle = {
