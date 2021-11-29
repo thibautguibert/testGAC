@@ -4,6 +4,7 @@ import OdometerList from './OdometerList';
 import AddOdometer from './AddOdometer';
 import ReadMe from './ReadMe';
 import SuccessModal from './components/SuccessModal';
+import ErrorModal from './components/ErrorModal';
 
 const RouterNavigation = () => (
   <Router>
@@ -14,6 +15,7 @@ const RouterNavigation = () => (
         <Scene key="readMe" component={ReadMe} />
       </Scene>
       <Scene key="successModal" component={SuccessModal} hideNavBar />
+      <Scene key="errorModal" component={ErrorModal} hideNavBar />
     </Modal>
   </Router>
 );

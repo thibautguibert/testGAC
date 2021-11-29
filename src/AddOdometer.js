@@ -64,8 +64,12 @@ const AddOdometer = () => {
       issued_on: moment(date).format('YYYY-MM-DD'),
       value: kilometers,
     };
-    dispatch(addNewMileage(newMileAge));
-    Actions.successModal();
+    if(kilometers === '') {
+      Actions.push('errorModal', { errorType: 'km0' });
+    } else {
+      dispatch(addNewMileage(newMileAge));
+      Actions.successModal();
+    }
   };
 
   return (
