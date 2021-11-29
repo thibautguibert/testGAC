@@ -6,6 +6,7 @@ export const colors = {
   yellow: '#F7C625',
   salmon: '#F48451',
   white: '#FFFFFF',
+  darkGray: '#999999',
   black: '#000000',
 };
 
@@ -17,9 +18,7 @@ const titleStyle = {
   padding: 10,
 };
 
-export const Title = ({ title }) => (
-  <Text style={titleStyle}>{title}</Text>
-);
+export const Title = ({ title }) => <Text style={titleStyle}>{title}</Text>;
 
 Title.propTypes = { title: PropTypes.string };
 Title.defaultProps = { title: '' };

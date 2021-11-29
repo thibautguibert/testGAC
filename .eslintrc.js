@@ -5,10 +5,7 @@ module.exports = {
     browser: true,
     node: true,
   },
-  plugins: [
-    'react',
-    'react-native',
-  ],
+  plugins: ['react', 'react-native'],
   rules: {
     'func-names': 0,
     indent: [2, 2, { SwitchCase: 1 }],
@@ -27,8 +24,12 @@ module.exports = {
     strict: [2, 'global'],
     'import/prefer-default-export': 0,
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }],
-    'react/function-component-definition': [2, { namedComponents: 'arrow-function', unnamedComponents: 'arrow-function' },
+    'react/function-component-definition': [
+      2,
+      {
+        namedComponents: 'arrow-function',
+        unnamedComponents: 'arrow-function',
+      },
     ],
-
   },
 };
