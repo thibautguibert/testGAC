@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
+import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
 import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment-timezone';
 import { colors, Title, Button } from './style';
+import { addNewMileage } from './actions/mileageReadings';
 
 const styles = StyleSheet.create({
   container: {
@@ -42,6 +44,9 @@ const styles = StyleSheet.create({
 });
 
 const AddOdometer = () => {
+  const dispatch = useDispatch();
+  const { mileageReadings } = useSelector((state) => state.mileageReadings);
+  const lastMileageDate = moment(mileageReadings[mileageReadings.length - 1].issued_on).toDate();
   const [date, setDate] = useState(new Date());
   const [kilometers, setKilometers] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
@@ -50,6 +55,15 @@ const AddOdometer = () => {
     const currentDate = selectedDate || date;
     setDate(currentDate);
     setShowCalendar(false);
+  };
+
+  const submitNewMileage = () => {
+    const newMileAge = {
+      id: mileageReadings.length + 1,
+      issued_on: moment(date).format('YYYY-MM-DD'),
+      value: kilometers,
+    };
+    dispatch(addNewMileage(newMileAge));
   };
 
   return (
@@ -67,6 +81,7 @@ const AddOdometer = () => {
             value={date}
             display="spinner"
             onChange={handleChange}
+            minimumDate={lastMileageDate}
             maximumDate={new Date()}
           />
         )}
@@ -83,7 +98,7 @@ const AddOdometer = () => {
         />
         <Text style={styles.text}>{kilometers ? `Le relevé kilométrique est de ${kilometers} km.` : 'Entrez le relevé ci-dessus'}</Text>
       </KeyboardAvoidingView>
-      <Button title="Ajoutez le relevé" width="90%" onPress={() => {}} />
+      <Button title="Ajoutez le relevé" width="90%" onPress={submitNewMileage} />
     </LinearGradient>
   );
 };
