@@ -6,7 +6,8 @@ export const colors = {
   yellow: '#F7C625',
   salmon: '#F48451',
   white: '#FFFFFF',
-  darkGray: '#999999',
+  gray: '#999999',
+  darkGray: '#4D4B4B',
   black: '#000000',
 };
 
@@ -15,7 +16,7 @@ const titleStyle = {
   color: colors.white,
   textAlign: 'center',
   fontWeight: 'bold',
-  padding: 10,
+  padding: 15,
 };
 
 export const Title = ({ title }) => <Text style={titleStyle}>{title}</Text>;

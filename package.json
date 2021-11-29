@@ -7,12 +7,13 @@
     "ios": "react-native run-ios",
     "start": "react-native start",
     "start-metro": "export NODE_OPTIONS=--openssl-legacy-provider && react-native start",
-    "test": "jest",
+    "test": "jest ./src",
     "lint": "eslint ."
   },
   "dependencies": {
     "@react-native-community/masked-view": "^0.1.11",
     "metro-config": "^0.66.2",
+    "moment-timezone": "^0.5.34",
     "prop-types": "^15.7.2",
     "react": "17.0.2",
     "react-native": "0.66.3",
