@@ -5,7 +5,11 @@ Pour lancer l'application sur un android, il faut d'abord build l'application av
 Ensuite, vous pouvez lancer l'application avec "yarn start" ou "yarn start-metro" (suivant votre version de node.js).
 
 Ajout d'un relevé kilométrique :
+
+
 ![alt text](https://github.com/thibautguibert/testGAC/blob/main/addAMileage.gif?raw=true 'gif ajout relevé kilométrique')
 
 Modification et suppression d'un relevé kilométrique :
+
+
 ![alt text](https://github.com/thibautguibert/testGAC/blob/main/modifyOrDelete.gif?raw=true 'gif ajout relevé kilométrique')
