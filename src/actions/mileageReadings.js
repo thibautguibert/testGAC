@@ -19,3 +19,11 @@ export function deleteMileage(id) {
     id,
   };
 }
+
+export function updateMileage(mileage, index) {
+  return {
+    type: 'MILEAGE.UPDATE',
+    mileage,
+    index,
+  };
+}

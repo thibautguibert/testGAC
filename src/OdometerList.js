@@ -40,10 +40,11 @@ const OdometerList = () => {
     >
       <Title title="Relevés kilométriques du véhicule" />
       <ScrollView>
-        {(mileageReadings || initialMileage.mileage_readings).map((mileage) => (
+        {(mileageReadings || initialMileage.mileage_readings).map((mileage, index) => (
           <OdometerCard
             key={mileage.id}
             id={mileage.id}
+            index={index}
             kilometers={mileage.value}
             date={mileage.issued_on}
           />

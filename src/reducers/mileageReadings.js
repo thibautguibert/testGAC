@@ -32,6 +32,16 @@ export default function mileageReadings(state = initialState, action = {}) {
       );
       return { ...state, mileageReadings: updatedMileageReadings };
     }
+    case 'MILEAGE.UPDATE': {
+      const updatedMileageReadings = [...state.mileageReadings];
+      updatedMileageReadings[action.index] = action.mileage;
+      const mileageReadingsToParse = { mileage_readings: updatedMileageReadings };
+      AsyncStorage.setItem(
+        'MILEAGE_READINGS',
+        JSON.stringify(mileageReadingsToParse),
+      );
+      return { ...state, mileageReadings: updatedMileageReadings };
+    }
     default:
       return state;
   }

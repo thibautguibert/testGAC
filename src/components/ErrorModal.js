@@ -40,6 +40,7 @@ const styles = StyleSheet.create({
 const errorData = {
   km0: 'Le relevé kilométrique est resté à zéro... Essayer d’entrer un chiffre plus grand',
   kmMoins: 'Le relevé kilométrique est inférieur à celui du dernier relevé. Resaisissez le montant',
+  kmPlus: 'Le relevé kilométrique est supérieur au relevé suivant. Resaissez le montant',
 };
 
 const ErrorModal = ({ errorType }) => (

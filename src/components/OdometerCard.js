@@ -2,6 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { View, StyleSheet, Text } from 'react-native';
 import { useDispatch } from 'react-redux';
+import { Actions } from 'react-native-router-flux';
+
 import { colors } from '../style';
 import { dateFormatting, spaceThousands } from '../utils/formatting';
 import { deleteMileage } from '../actions/mileageReadings';
@@ -49,7 +51,7 @@ const styles = StyleSheet.create({
   },
 });
 
-const OdometerCard = ({ kilometers, date, id }) => {
+const OdometerCard = ({ kilometers, date, id, index }) => {
   const dispatch = useDispatch();
   const onDeletePress = () => {
     dispatch(deleteMileage(id));
@@ -60,7 +62,7 @@ const OdometerCard = ({ kilometers, date, id }) => {
       <Text style={styles.date}>{`Relevé du ${dateFormatting(date)}`}</Text>
       <Text style={styles.kilometers}>{`${spaceThousands(kilometers)} km`}</Text>
       <View style={styles.iconsContainer}>
-        <ModifyIcon height={20} width={20} style={styles.icon} />
+        <ModifyIcon height={20} width={20} style={styles.icon} onPress={() => Actions.push('modifyOdometer', { issuedOn: date, value: kilometers, id, index })} />
         <DeleteIcon height={20} width={20} style={styles.icon} onPress={onDeletePress} />
       </View>
     </View>
@@ -71,6 +73,7 @@ OdometerCard.propTypes = {
   kilometers: PropTypes.string,
   date: PropTypes.string,
   id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
 };
 
 OdometerCard.defaultProps = {
