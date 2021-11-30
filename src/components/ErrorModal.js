@@ -48,7 +48,9 @@ const ErrorModal = ({ errorType }) => (
     style={styles.container}
   >
     <View style={styles.popUp}>
-      <Text style={styles.infoText}>{errorData[errorType] || 'Une erreur de saisie est intervenue. Pouvez-vous réessayer ?'}</Text>
+      <Text style={styles.infoText}>
+        {errorData[errorType] || 'Une erreur de saisie est intervenue. Pouvez-vous réessayer ?'}
+      </Text>
       <View>
         <TouchableOpacity onPress={Actions.pop}>
           <Text style={styles.closeText}>Revenir à la page précédente</Text>

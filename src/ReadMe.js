@@ -1,7 +1,11 @@
 import React from 'react';
-import { ScrollView, Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet } from 'react-native';
 import LinearGradient from 'react-native-linear-gradient';
-import { colors, Title } from './style';
+import { useDispatch } from 'react-redux';
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { overwriteMileageReadings } from './actions/mileageReadings';
+import { Button, colors, Title } from './style';
+import mileageReadingsJson from './data/mileage_readings.json';
 
 const styles = StyleSheet.create({
   container: {
@@ -16,16 +20,30 @@ const styles = StyleSheet.create({
   },
 });
 
-const ReadMe = () => (
-  <LinearGradient
-    colors={[colors.yellow, colors.salmon]}
-    style={styles.container}
-  >
-    <Title title="En savoir plus" />
-    <ScrollView>
-      <Text style={styles.text}>Pour ajouter un relevé antérieur à un relevé déjà existant, il faut d'abord supprimer ce dernier.</Text>
-    </ScrollView>
-  </LinearGradient>
-);
+const ReadMe = () => {
+  const dispatch = useDispatch();
+
+  const reinitializeData = () => {
+    AsyncStorage.setItem(
+      'MILEAGE_READINGS',
+      JSON.stringify(mileageReadingsJson),
+    );
+    dispatch(overwriteMileageReadings(JSON.stringify(mileageReadingsJson)));
+  };
+
+  return (
+    <LinearGradient
+      colors={[colors.yellow, colors.salmon]}
+      style={styles.container}
+    >
+      <Title title="En savoir plus" />
+      <Text style={styles.text}>
+        Pour ajouter un relevé antérieur à un relevé déjà existant, il faut
+        d’abord supprimer ce dernier.
+      </Text>
+      <Button title="Réinitialiser les données" onPress={reinitializeData} />
+    </LinearGradient>
+  );
+};
 
 export default ReadMe;

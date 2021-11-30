@@ -44,8 +44,18 @@ export const Title = ({ title }) => <Text style={titleStyle}>{title}</Text>;
 Title.propTypes = { title: PropTypes.string };
 Title.defaultProps = { title: '' };
 
-export const Button = ({ title, backgroundColor, width, textColor, onPress }) => (
-  <TouchableOpacity onPress={onPress} style={buttonStyle(backgroundColor, width)} activeOpacity={0.9}>
+export const Button = ({
+  title,
+  backgroundColor,
+  width,
+  textColor,
+  onPress,
+}) => (
+  <TouchableOpacity
+    onPress={onPress}
+    style={buttonStyle(backgroundColor, width)}
+    activeOpacity={0.9}
+  >
     <View>
       <Text style={buttonText(textColor)}>{title}</Text>
     </View>

@@ -1,5 +1,11 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
+import {
+  View,
+  Text,
+  StyleSheet,
+  TextInput,
+  KeyboardAvoidingView,
+} from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
@@ -83,7 +89,10 @@ const AddOdometer = () => {
       <Title title="Ajouter un relevé" />
       <Text style={styles.subTitle}>Date du relevé</Text>
       <View style={styles.column}>
-        <Button onPress={() => setShowCalendar(true)} title="Choisissez une date" />
+        <Button
+          onPress={() => setShowCalendar(true)}
+          title="Choisissez une date"
+        />
         {showCalendar && (
           <DateTimePicker
             testID="dateTimePicker"
@@ -97,7 +106,10 @@ const AddOdometer = () => {
         <Text style={styles.text}>{`La date sélectionnée est le ${moment(date).format('Do MMMM YYYY')}`}</Text>
       </View>
       <Text style={styles.subTitle}>Relevé kilométrique</Text>
-      <KeyboardAvoidingView style={[styles.column, { paddingBottom: 20 }]} behavior="padding">
+      <KeyboardAvoidingView
+        style={[styles.column, { paddingBottom: 20 }]}
+        behavior="padding"
+      >
         <TextInput
           onChangeText={setKilometers}
           value={kilometers}
@@ -105,9 +117,17 @@ const AddOdometer = () => {
           style={styles.input}
           keyboardType="numeric"
         />
-        <Text style={styles.text}>{kilometers ? `Le relevé kilométrique est de ${kilometers} km.` : 'Entrez le relevé ci-dessus'}</Text>
+        <Text style={styles.text}>
+          {kilometers
+            ? `Le relevé kilométrique est de ${kilometers} km.`
+            : 'Entrez le relevé ci-dessus'}
+        </Text>
       </KeyboardAvoidingView>
-      <Button title="Ajoutez le relevé" width="90%" onPress={submitNewMileage} />
+      <Button
+        title="Ajoutez le relevé"
+        width="90%"
+        onPress={submitNewMileage}
+      />
     </LinearGradient>
   );
 };

@@ -11,11 +11,18 @@ export default function mileageReadings(state = initialState, action = {}) {
     case 'MILEAGE.ADD': {
       const newMileageReadings = [...state.mileageReadings, action.newMileage];
       const mileageReadingsToParse = { mileage_readings: newMileageReadings };
-      AsyncStorage.setItem('MILEAGE_READINGS', JSON.stringify(mileageReadingsToParse));
+      AsyncStorage.setItem(
+        'MILEAGE_READINGS',
+        JSON.stringify(mileageReadingsToParse),
+      );
       return { ...state, mileageReadings: newMileageReadings };
     }
     case 'MILEAGE.OVERWRITE':
-      return { ...state, mileageReadings: action.mileageReadings, overwrittenOnLaunch: true };
+      return {
+        ...state,
+        mileageReadings: action.mileageReadings,
+        overwrittenOnLaunch: true,
+      };
     default:
       return state;
   }
