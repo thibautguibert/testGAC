@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     elevation: 15,
     width: '75%',
     backgroundColor: colors.white,
-    padding: 30,
+    padding: 20,
     borderRadius: 20,
   },
   infoText: {
@@ -39,7 +39,7 @@ const styles = StyleSheet.create({
 
 const errorData = {
   km0: 'Le relevé kilométrique est resté à zéro... Essayer d’entrer un chiffre plus grand',
-  kmMoins: 'Le relevé kilométrique est supérieur à celui d’une date plus récente. Resaisissez le montant',
+  kmMoins: 'Le relevé kilométrique est inférieur à celui du dernier relevé. Resaisissez le montant',
 };
 
 const ErrorModal = ({ errorType }) => (
