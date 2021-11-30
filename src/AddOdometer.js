@@ -60,11 +60,11 @@ const AddOdometer = () => {
 
   const submitNewMileage = () => {
     const newMileAge = {
-      id: mileageReadings.length + 1,
+      id: mileageReadings[mileageReadings.length - 1].id + 1,
       issued_on: moment(date).format('YYYY-MM-DD'),
       value: kilometers,
     };
-    if(kilometers === '') {
+    if (kilometers === '') {
       Actions.push('errorModal', { errorType: 'km0' });
     } else {
       dispatch(addNewMileage(newMileAge));
