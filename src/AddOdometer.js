@@ -48,6 +48,7 @@ const AddOdometer = () => {
   const dispatch = useDispatch();
   const { mileageReadings } = useSelector((state) => state.mileageReadings);
   const lastMileageDate = moment(mileageReadings[mileageReadings.length - 1].issued_on).toDate();
+  const lastMileageValue = mileageReadings[mileageReadings.length - 1].value;
   const [date, setDate] = useState(new Date());
   const [kilometers, setKilometers] = useState('');
   const [showCalendar, setShowCalendar] = useState(false);
@@ -66,6 +67,8 @@ const AddOdometer = () => {
     };
     if (kilometers === '') {
       Actions.push('errorModal', { errorType: 'km0' });
+    } else if (kilometers <= lastMileageValue) {
+      Actions.push('errorModal', { errorType: 'kmMoins' });
     } else {
       dispatch(addNewMileage(newMileAge));
       Actions.successModal();
