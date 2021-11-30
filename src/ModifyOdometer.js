@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
 const ModifyOdometer = ({ issuedOn, value, id, index }) => {
   const dispatch = useDispatch();
   const { mileageReadings } = useSelector((state) => state.mileageReadings);
-  const nextMileageValue = mileageReadings[index + 1].value || 100000000000;
+  const nextMileageValue = (mileageReadings[index + 1] || {}).value || 10000000;
   const [kilometers, setKilometers] = useState(value);
 
   const submitUpdatedMileage = () => {
