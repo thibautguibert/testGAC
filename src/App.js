@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   backgroundApp: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: colors.yellow,
   },
 });
 

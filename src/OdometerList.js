@@ -43,6 +43,7 @@ const OdometerList = () => {
         {(mileageReadings || initialMileage.mileage_readings).map((mileage) => (
           <OdometerCard
             key={mileage.id}
+            id={mileage.id}
             kilometers={mileage.value}
             date={mileage.issued_on}
           />
