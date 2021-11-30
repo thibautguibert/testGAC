@@ -20,7 +20,6 @@ const styles = StyleSheet.create({
   backgroundApp: {
     flex: 1,
     justifyContent: 'space-between',
-    backgroundColor: colors.yellow,
   },
 });
 
@@ -42,7 +41,10 @@ const App = () => {
     retrieveFirstLogin().then((result) => {
       if (!result) {
         AsyncStorage.setItem('FIRST_LOGIN', 'false');
-        AsyncStorage.setItem('MILEAGE_READINGS', JSON.stringify(mileageReadingsJson));
+        AsyncStorage.setItem(
+          'MILEAGE_READINGS',
+          JSON.stringify(mileageReadingsJson),
+        );
       }
     });
   }, []);

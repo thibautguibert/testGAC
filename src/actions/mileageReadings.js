@@ -12,3 +12,18 @@ export function overwriteMileageReadings(asyncStorageData) {
     mileageReadings: formattedData.mileage_readings,
   };
 }
+
+export function deleteMileage(id) {
+  return {
+    type: 'MILEAGE.DELETE',
+    id,
+  };
+}
+
+export function updateMileage(mileage, index) {
+  return {
+    type: 'MILEAGE.UPDATE',
+    mileage,
+    index,
+  };
+}

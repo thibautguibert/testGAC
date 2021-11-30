@@ -31,5 +31,11 @@ module.exports = {
         unnamedComponents: 'arrow-function',
       },
     ],
+    'object-curly-newline': ['error', {
+      ObjectPattern: { multiline: true, minProperties: 5 },
+      ImportDeclaration: 'never',
+      ExportDeclaration: { multiline: true, minProperties: 5 },
+    },
+    ],
   },
 };

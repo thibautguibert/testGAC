@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import { View, Text, StyleSheet, TextInput, KeyboardAvoidingView } from 'react-native';
 import { Actions } from 'react-native-router-flux';
 import { useDispatch, useSelector } from 'react-redux';
 import LinearGradient from 'react-native-linear-gradient';
-import DateTimePicker from '@react-native-community/datetimepicker';
 import moment from 'moment-timezone';
 import { colors, Title, Button } from './style';
-import { addNewMileage } from './actions/mileageReadings';
+import { updateMileage } from './actions/mileageReadings';
 
 const styles = StyleSheet.create({
   container: {
@@ -44,33 +44,24 @@ const styles = StyleSheet.create({
   },
 });
 
-const AddOdometer = () => {
+const ModifyOdometer = ({ issuedOn, value, id, index }) => {
   const dispatch = useDispatch();
   const { mileageReadings } = useSelector((state) => state.mileageReadings);
-  const lastMileageDate = moment(mileageReadings[mileageReadings.length - 1].issued_on).toDate();
-  const lastMileageValue = mileageReadings[mileageReadings.length - 1].value;
-  const [date, setDate] = useState(new Date());
-  const [kilometers, setKilometers] = useState('');
-  const [showCalendar, setShowCalendar] = useState(false);
+  const nextMileageValue = mileageReadings[index + 1].value || 100000000000;
+  const [kilometers, setKilometers] = useState(value);
 
-  const handleChange = (e, selectedDate) => {
-    const currentDate = selectedDate || date;
-    setDate(currentDate);
-    setShowCalendar(false);
-  };
-
-  const submitNewMileage = () => {
-    const newMileAge = {
-      id: mileageReadings[mileageReadings.length - 1].id + 1,
-      issued_on: moment(date).format('YYYY-MM-DD'),
+  const submitUpdatedMileage = () => {
+    const updatedMileAge = {
+      id,
+      issued_on: issuedOn,
       value: kilometers,
     };
     if (kilometers === '') {
       Actions.push('errorModal', { errorType: 'km0' });
-    } else if (kilometers <= lastMileageValue) {
-      Actions.push('errorModal', { errorType: 'kmMoins' });
+    } else if (kilometers >= nextMileageValue) {
+      Actions.push('errorModal', { errorType: 'kmPlus' });
     } else {
-      dispatch(addNewMileage(newMileAge));
+      dispatch(updateMileage(updatedMileAge, index));
       Actions.successModal();
     }
   };
@@ -80,24 +71,12 @@ const AddOdometer = () => {
       colors={[colors.yellow, colors.salmon]}
       style={styles.container}
     >
-      <Title title="Ajouter un relevé" />
+      <Title title="Modifier le relevé" />
       <Text style={styles.subTitle}>Date du relevé</Text>
       <View style={styles.column}>
-        <Button
-          onPress={() => setShowCalendar(true)}
-          title="Choisissez une date"
-        />
-        {showCalendar && (
-          <DateTimePicker
-            testID="dateTimePicker"
-            value={date}
-            display="spinner"
-            onChange={handleChange}
-            minimumDate={lastMileageDate}
-            maximumDate={new Date()}
-          />
-        )}
-        <Text style={styles.text}>{`La date sélectionnée est le ${moment(date).format('Do MMMM YYYY')}`}</Text>
+        <Text style={styles.text}>
+          {`La date sélectionnée est le ${moment(issuedOn).format('Do MMMM YYYY')}. Pour modifier la date, veuillez plutôt supprimer le relevé`}
+        </Text>
       </View>
       <Text style={styles.subTitle}>Relevé kilométrique</Text>
       <KeyboardAvoidingView
@@ -118,12 +97,19 @@ const AddOdometer = () => {
         </Text>
       </KeyboardAvoidingView>
       <Button
-        title="Ajoutez le relevé"
+        title="Modifiez le relevé"
         width="90%"
-        onPress={submitNewMileage}
+        onPress={submitUpdatedMileage}
       />
     </LinearGradient>
   );
 };
 
-export default AddOdometer;
+ModifyOdometer.propTypes = {
+  issuedOn: PropTypes.string.isRequired,
+  value: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
+  index: PropTypes.number.isRequired,
+};
+
+export default ModifyOdometer;

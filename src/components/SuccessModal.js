@@ -42,7 +42,9 @@ const SuccessModal = () => (
     style={styles.container}
   >
     <View style={styles.popUp}>
-      <Text style={styles.infoText}>Le relevé kilométrique a bien été ajouté !</Text>
+      <Text style={styles.infoText}>
+        Le relevé kilométrique a bien été ajouté !
+      </Text>
       <View>
         <TouchableOpacity onPress={Actions.pop}>
           <Text style={styles.closeText}>Revenir à la page précédente</Text>
